@@ -45,7 +45,7 @@ class BlackjackTest {
     public void testDeckCreation() {
         Deck deck = new Deck();
         Assertions.assertEquals(56, deck.size());
-        Card card = deck.assignCard();
+        Card card = deck.dealTheCard();
         Assertions.assertEquals(55, deck.size());
         Assertions.assertEquals(Rank.Joker, card.getRank());
     }
