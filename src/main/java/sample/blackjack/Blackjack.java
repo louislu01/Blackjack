@@ -34,7 +34,7 @@ public class Blackjack {
     public void hit(String playerName) {
         BlackjackPlayer player = getBlackjackPlayer(playerName);
         if (player != null) {
-            player.addCard(deck.assignCard());
+            player.addCard(deck.dealTheCard());
         }
     }
 
@@ -52,6 +52,14 @@ public class Blackjack {
             return player.isBlackjack();
         }
         return false;
+    }
+
+    public int getTotalPoints(String playerName) {
+        BlackjackPlayer player = getBlackjackPlayer(playerName);
+        if (player != null) {
+            return player.getTotalPoints();
+        }
+        return 0;
     }
 
     public String showHand(String playerName) {
@@ -88,19 +96,18 @@ public class Blackjack {
         deck.shuffle();
         for (int i = 0; i < 2; i++) {
             for (BlackjackPlayer player : humanPlayers) {
-                player.addCard(deck.assignCard());
+                player.addCard(deck.dealTheCard());
             }
-            dealer.addCard(deck.assignCard());
+            dealer.addCard(deck.dealTheCard());
         }
     }
 
     /**
      * Dealer going to play the card based on predefined rule
-     * @return true if dealer was bursted.
      */
     public void beginDealerPlay() {
         while (dealer.wantToHit(humanPlayers)) {
-            dealer.addCard(deck.assignCard());
+            dealer.addCard(deck.dealTheCard());
         }
     }
 
@@ -167,18 +174,18 @@ public class Blackjack {
         deck.shuffle();
         for (int i = 0; i < 2; i++) {
             for (BlackjackPlayer player : humanPlayers) {
-                player.addCard(deck.assignCard());
+                player.addCard(deck.dealTheCard());
             }
-            dealer.addCard(deck.assignCard());
+            dealer.addCard(deck.dealTheCard());
         }
 
         for (BlackjackPlayer player : humanPlayers) {
             do {
-                System.out.println(player.getName() + ": your total point is " + player.calculateScore());
+                System.out.println(player.getName() + ": your total point is " + player.getTotalPoints());
                 System.out.println(player.showHand());
-                System.out.print("Please enter Y(es) to Hit or any other keys to Stand");
+                System.out.print("Please enter Y(es) to Hit or any other keys to Stand ");
                 if ("Y".equalsIgnoreCase(new Scanner(System.in).nextLine())) {
-                    player.addCard(deck.assignCard());
+                    player.addCard(deck.dealTheCard());
                     if (player.isBursted()) {
                         System.out.println("Sorry you are busted!");
                         System.out.println(player.showHand());

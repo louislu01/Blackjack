@@ -28,7 +28,7 @@ public class BlackjackClient {
 
         for (String playerName : blackjack.getPlayerNames()) {
             do {
-                System.out.print(playerName + ": ");
+                System.out.println(playerName + ": your total point is " + blackjack.getTotalPoints(playerName));
                 System.out.println(blackjack.showHand(playerName));
                 System.out.print("Please enter Y(es) to Hit or any other keys to Stand ");
                 if ("Y".equalsIgnoreCase(new Scanner(System.in).nextLine())) {
@@ -49,7 +49,7 @@ public class BlackjackClient {
 
         GameResult result = blackjack.generateGameResult();
         System.out.println();
-        System.out.println("============ Game over, play results as following:");
+        System.out.println("============ Game over, play results are as following:");
         System.out.println("Game winner are:");
         for (BlackjackPlayer player : result.getWinner()) {
             System.out.print(player.getName() + ": ");

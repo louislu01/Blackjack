@@ -21,7 +21,7 @@ public class Deck {
         Collections.shuffle(deck);
     }
 
-    public Card assignCard() {
+    public Card dealTheCard() {
 
         return deck.remove(0);
     }

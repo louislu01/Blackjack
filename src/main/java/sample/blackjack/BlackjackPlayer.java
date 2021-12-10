@@ -39,7 +39,7 @@ public class BlackjackPlayer implements Serializable {
 
         StringBuilder sb = new StringBuilder(hand.showHands());
 
-        sb.append(" With Score: " + hand.calculateScore());
+        sb.append(" Score: " + hand.calculateScore());
 
         return sb.toString();
     }
