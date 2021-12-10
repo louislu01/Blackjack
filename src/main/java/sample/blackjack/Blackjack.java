@@ -15,10 +15,10 @@ public class Blackjack {
         this.dealer = dealer;
     }
 
-    public void initPlayers(String[] names) throws Exception{
+    public void initPlayers(String[] names) throws InvalidInputException{
 
         if (names == null || names.length == 0 || names.length > MAX_USER_COUNT) {
-            throw new Exception("Number of player is between 1 - 3");
+            throw new InvalidInputException("Number of player is between 1 - 3");
         }
 
         humanPlayers.clear();
@@ -85,10 +85,10 @@ public class Blackjack {
         dealer.clearHand();
     }
 
-    public void beginGame() throws Exception {
+    public void beginGame() throws InvalidInputException {
 
         if (humanPlayers.size() == 0) {
-            throw new Exception("Please assign the players first!");
+            throw new InvalidInputException("Please assign the players first!");
         }
 
         initContext();

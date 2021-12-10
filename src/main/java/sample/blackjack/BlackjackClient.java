@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class BlackjackClient {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         System.out.println("Start Blackjack client...");
 
@@ -22,9 +22,16 @@ public class BlackjackClient {
             playerNames[i] = new Scanner(System.in).nextLine();
         }
 
-        blackjack.initPlayers(playerNames);
-        blackjack.setDealer(new Dealer("DefaultDealer", new SimpleBlackjackPlayRule()));
-        blackjack.beginGame();
+        try {
+            blackjack.initPlayers(playerNames);
+
+            blackjack.setDealer(new Dealer("DefaultDealer", new SimpleBlackjackPlayRule()));
+
+            blackjack.beginGame();
+        } catch (InvalidInputException e) {
+            // Skip. nothing to worry. we should not get this exception here.
+            throw new RuntimeException(e.getMessage());
+        }
 
         for (String playerName : blackjack.getPlayerNames()) {
             do {
