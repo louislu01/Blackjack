@@ -1,12 +1,11 @@
 package sample.blackjack;
 
-public class BlackjackPlayer {
+import java.io.Serializable;
 
-    private String name;
+public class BlackjackPlayer implements Serializable {
+
+    private final String name;
     private final Hand hand = new Hand();
-
-    public BlackjackPlayer() {
-    }
 
     public BlackjackPlayer(String name) {
         this.name = name;
@@ -16,31 +15,40 @@ public class BlackjackPlayer {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Hand getHand() {
         return hand;
     }
 
     public boolean isBlackjack() {
-        return hand.calculatePoints() == 21;
+        return hand.calculateScore() == 21;
     }
 
-    public boolean isBusted() {
-        return hand.calculatePoints() > 21;
+    public boolean isBursted() {
+        return hand.calculateScore() > 21;
     }
 
-    public Integer calculatePoints() {
-        return hand.calculatePoints();
+    public int calculateScore() {
+        return hand.calculateScore();
+    }
+
+    public int getTotalPoints() {
+        return hand.getTotalPoint();
     }
 
     public String showHand() {
-        return hand.toString();
+
+        StringBuilder sb = new StringBuilder(hand.showHands());
+
+        sb.append(" With Score: " + hand.calculateScore());
+
+        return sb.toString();
     }
 
     public void addCard(Card card) {
         hand.addCard(card);
+    }
+
+    public void clearHand() {
+        hand.clearHand();
     }
 }

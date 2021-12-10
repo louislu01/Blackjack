@@ -1,14 +1,29 @@
 package sample.blackjack;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Dealer extends BlackjackPlayer {
 
-    public Dealer() {
-        super("sample.blackjack.Dealer");
+    private DealerStrategy dealerStrategy = new SimpleBlackjackPlayRule();
+
+    public Dealer(String name) {
+        super(name);
     }
 
-    public void play(Deck deck, ArrayList<BlackjackPlayer> currentPlayer) {
+    public Dealer(String name, DealerStrategy dealerStrategy) {
+        super(name);
+        this.dealerStrategy = dealerStrategy;
+    }
 
+    public void setDealerStrategy(DealerStrategy dealerStrategy) {
+        this.dealerStrategy = dealerStrategy;
+    }
+
+    public DealerStrategy getDealerStrategy() {
+        return dealerStrategy;
+    }
+
+    public boolean wantToHit(List<BlackjackPlayer> humanPlayers) {
+        return dealerStrategy.wantToHit(this, humanPlayers);
     }
 }

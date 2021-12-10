@@ -2,11 +2,11 @@ package sample.blackjack;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Deck {
 
-    private final ArrayList<Card> deck = new ArrayList<Card>();
-
+    private final List<Card> deck = new ArrayList<Card>();
 
     public Deck() {
 
@@ -21,7 +21,7 @@ public class Deck {
         Collections.shuffle(deck);
     }
 
-    public Card retriveCard() {
+    public Card assignCard() {
 
         return deck.remove(0);
     }

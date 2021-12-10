@@ -18,13 +18,13 @@ public enum Rank {
     King(10);
 
 
-    private final Integer blackJackPoint;
+    private final int blackJackPoint;
 
-    Rank(Integer blackJackPoint) {
+    Rank(int blackJackPoint) {
         this.blackJackPoint = blackJackPoint;
     }
 
-    public Integer getBlackJackPoint() {
+    public int getBlackJackPoint() {
         return blackJackPoint;
     }
 

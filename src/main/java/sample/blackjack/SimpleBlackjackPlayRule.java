@@ -4,8 +4,6 @@ import java.util.List;
 
 public class SimpleBlackjackPlayRule implements DealerStrategy {
 
-    private final int MAX_STOP_HIT_SCORE = 16;
-
     @Override
     public boolean wantToHit(BlackjackPlayer dealer, List<BlackjackPlayer> humanPlayers) {
         int MAX_STOP_HIT_SCORE = 16;

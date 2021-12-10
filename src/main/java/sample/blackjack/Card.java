@@ -1,6 +1,8 @@
 package sample.blackjack;
 
-public class Card {
+import java.io.Serializable;
+
+public class Card implements Serializable  {
 
     private final Rank rank;
     private final Suit  suit;
@@ -20,7 +22,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return "sample.blackjack.Card{" +
+        return "Card{" +
                 "rank=" + rank +
                 ", suit=" + suit +
                 '}';
